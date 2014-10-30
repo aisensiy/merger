@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'mockup/index'
+
+  get 'mockup/buyer'
+
+  get 'mockup/buy'
+
+  get 'mockup/target'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
