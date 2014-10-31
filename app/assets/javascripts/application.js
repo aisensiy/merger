@@ -14,5 +14,5 @@
 //= require jquery-ui
 //= require bootstrap-sprockets
 //= require jquery_ujs
-//= require jquery.jqGrid.min
+//= require jquery.jqGrid
 //= require_tree .
