@@ -1,2 +1,28 @@
-<h1>Mockup#buyer</h1>
-<p>Find me in app/views/mockup/buyer.html.erb</p>
+<h1>行业: 食品制造业</h1>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th></th>
+    <th>代码</th>
+    <th>名称</th>
+    <th>控股人</th>
+    <th>行业</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% 10.times do %>
+      <tr>
+        <td>
+          <label>
+            <input type="checkbox" id="blankCheckbox" value="option1">
+          </label>
+        </td>
+        <td>300379</td>
+        <td>东方通</td>
+        <td>张齐春、朱海东及朱曼</td>
+        <td>软件和信息技术服务业</td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= submit_tag("获取置入资产", class: "btn btn-primary") %>
