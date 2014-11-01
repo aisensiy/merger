@@ -31,6 +31,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem "factory_girl_rails", "~> 4.0"
+gem "faker"
 
 group :development do
   gem 'capistrano'
