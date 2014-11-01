@@ -20,15 +20,7 @@ class CreateTargets < ActiveRecord::Migration
       t.float :t_minus_1_net_profit
       t.float :net_profit
 
-      t.float :valuation
-      t.string :valuation_method
-      t.date :valuation_date
-      t.float :transaction_price
-
-      t.float :trading_book_value
-      t.float :static_earnings
-      t.float :trading_earnings
-      t.float :three_year_avg_earnings
+      t.boolean :is_sold
 
       t.timestamps
     end
