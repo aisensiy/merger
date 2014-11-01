@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  buyer_id: 1
+  target_id: 1
+  draft_announce_date: 2014-11-01
+  report_name: MyString
+  evaluation_method: MyString
+  consultant: MyString
+  pay_method: MyString
+  financing: 1.5
+  finacing_issuer: MyString
+  finacing_use: MyString
+
+two:
+  buyer_id: 1
+  target_id: 1
+  draft_announce_date: 2014-11-01
+  report_name: MyString
+  evaluation_method: MyString
+  consultant: MyString
+  pay_method: MyString
+  financing: 1.5
+  finacing_issuer: MyString
+  finacing_use: MyString

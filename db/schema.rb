@@ -11,13 +11,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141101090939) do
+ActiveRecord::Schema.define(version: 20141101091310) do
 
   create_table "buyers", force: true do |t|
     t.string   "name"
     t.string   "code"
     t.string   "owner"
     t.integer  "industry"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "deals", force: true do |t|
+    t.integer  "buyer_id"
+    t.integer  "target_id"
+    t.date     "draft_announce_date"
+    t.string   "report_name"
+    t.string   "consultant"
+    t.string   "pay_method"
+    t.float    "financing",                  limit: 24
+    t.string   "finacing_issuer"
+    t.string   "finacing_use"
+    t.float    "net_assets",                 limit: 24
+    t.float    "liabilities",                limit: 24
+    t.float    "total_assets",               limit: 24
+    t.float    "t_minus_1_total_assets",     limit: 24
+    t.float    "t_minus_2_total_assets",     limit: 24
+    t.float    "t_minus_1_operating_income", limit: 24
+    t.float    "t_minus_2_operating_income", limit: 24
+    t.float    "t_minus_1_net_profit",       limit: 24
+    t.float    "net_profit",                 limit: 24
+    t.float    "t_plus_1_net_profit",        limit: 24
+    t.float    "t_plus_2_net_profit",        limit: 24
+    t.float    "t_plus_3_net_profit",        limit: 24
+    t.float    "valuation",                  limit: 24
+    t.string   "valuation_method"
+    t.date     "valuation_date"
+    t.float    "transaction_price",          limit: 24
+    t.float    "trading_book_value",         limit: 24
+    t.float    "static_earnings",            limit: 24
+    t.float    "trading_earnings",           limit: 24
+    t.float    "three_year_avg_earnings",    limit: 24
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,17 +80,9 @@ ActiveRecord::Schema.define(version: 20141101090939) do
     t.float    "t_minus_2_operating_income", limit: 24
     t.float    "t_minus_1_net_profit",       limit: 24
     t.float    "net_profit",                 limit: 24
-    t.float    "valuation",                  limit: 24
-    t.string   "valuation_method"
-    t.date     "valuation_date"
-    t.float    "transaction_price",          limit: 24
-    t.float    "trading_book_value",         limit: 24
-    t.float    "static_earnings",            limit: 24
-    t.float    "trading_earnings",           limit: 24
-    t.float    "three_year_avg_earnings",    limit: 24
+    t.boolean  "is_sold"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_sold"
   end
 
 end
