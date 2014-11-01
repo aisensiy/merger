@@ -4,7 +4,7 @@ class CreateBuyers < ActiveRecord::Migration
       t.string :name
       t.string :code
       t.string :owner
-      t.integer :industry
+      t.integer :industry_id
 
       t.timestamps
     end
