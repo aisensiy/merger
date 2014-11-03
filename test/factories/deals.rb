@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :deal do
     buyer
-    target
+    association :target, is_sold: true
     draft_announce_date { Faker::Date.between(2.years.ago, 10.days.ago) }
     sequence(:report_name) { |n| "Report #{n}" }
     sequence(:consultant) { |n| "Consultant #{n}" }
