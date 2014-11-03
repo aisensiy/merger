@@ -10,17 +10,17 @@
   </tr>
   </thead>
   <tbody>
-  <% 10.times do %>
+  <% @buyers.each do |buyer| %>
       <tr>
         <td>
           <label>
             <input type="checkbox" id="blankCheckbox" value="option1">
           </label>
         </td>
-        <td>300379</td>
-        <td>东方通</td>
-        <td>张齐春、朱海东及朱曼</td>
-        <td>软件和信息技术服务业</td>
+        <td><%= buyer.code %></td>
+        <td><%= buyer.name %></td>
+        <td><%= buyer.owner %></td>
+        <td><%= buyer.industry.name %></td>
       </tr>
   <% end %>
   </tbody>
