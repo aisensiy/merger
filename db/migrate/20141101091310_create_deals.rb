@@ -9,7 +9,7 @@ class CreateDeals < ActiveRecord::Migration
       t.string :consultant
       t.string :pay_method
       t.float :financing
-      t.string :finacing_issuer
+      t.string :finacing_target
       t.string :finacing_use
 
       t.float :net_assets
@@ -17,6 +17,8 @@ class CreateDeals < ActiveRecord::Migration
       t.float :total_assets
       t.float :t_minus_1_total_assets
       t.float :t_minus_2_total_assets
+      t.float :t_minus_1_net_assets
+      t.float :t_minus_2_net_assets
       t.float :t_minus_1_operating_income
       t.float :t_minus_2_operating_income
       t.float :t_minus_1_net_profit

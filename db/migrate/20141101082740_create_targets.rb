@@ -15,6 +15,8 @@ class CreateTargets < ActiveRecord::Migration
       t.float :total_assets
       t.float :t_minus_1_total_assets
       t.float :t_minus_2_total_assets
+      t.float :t_minus_1_net_assets
+      t.float :t_minus_2_net_assets
       t.float :t_minus_1_operating_income
       t.float :t_minus_2_operating_income
       t.float :t_minus_1_net_profit

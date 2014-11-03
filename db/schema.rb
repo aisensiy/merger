@@ -30,13 +30,15 @@ ActiveRecord::Schema.define(version: 20141101091310) do
     t.string   "consultant"
     t.string   "pay_method"
     t.float    "financing",                  limit: 24
-    t.string   "finacing_issuer"
+    t.string   "finacing_target"
     t.string   "finacing_use"
     t.float    "net_assets",                 limit: 24
     t.float    "liabilities",                limit: 24
     t.float    "total_assets",               limit: 24
     t.float    "t_minus_1_total_assets",     limit: 24
     t.float    "t_minus_2_total_assets",     limit: 24
+    t.float    "t_minus_1_net_assets",       limit: 24
+    t.float    "t_minus_2_net_assets",       limit: 24
     t.float    "t_minus_1_operating_income", limit: 24
     t.float    "t_minus_2_operating_income", limit: 24
     t.float    "t_minus_1_net_profit",       limit: 24
@@ -76,6 +78,8 @@ ActiveRecord::Schema.define(version: 20141101091310) do
     t.float    "total_assets",               limit: 24
     t.float    "t_minus_1_total_assets",     limit: 24
     t.float    "t_minus_2_total_assets",     limit: 24
+    t.float    "t_minus_1_net_assets",       limit: 24
+    t.float    "t_minus_2_net_assets",       limit: 24
     t.float    "t_minus_1_operating_income", limit: 24
     t.float    "t_minus_2_operating_income", limit: 24
     t.float    "t_minus_1_net_profit",       limit: 24
