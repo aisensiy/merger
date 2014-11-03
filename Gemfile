@@ -40,6 +40,11 @@ group :development do
   gem 'capistrano-rbenv'
 end
 
+group :test do
+  gem 'minitest'
+  gem 'shoulda'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
