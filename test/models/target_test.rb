@@ -1,7 +1,11 @@
 require 'test_helper'
 
 class TargetTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    @target = build :target
+  end
+
+  test 'should have one deal' do
+    assert @target.respond_to?(:deal)
+  end
 end
