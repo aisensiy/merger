@@ -8,7 +8,7 @@ class MockupController < ApplicationController
   end
 
   def buy
-    @targets = Target.includes(:industry).limit(50)
+    @deals = Deal.includes(target: :industry, buyer: :industry)
   end
 
   def target

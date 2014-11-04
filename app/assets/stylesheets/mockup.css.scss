@@ -1,3 +1,18 @@
-// Place all the styles related to the mockup controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.target-table-container {
+  overflow: auto;
+}
+
+table.target-table {
+  table-layout: fixed;
+  width: auto;
+  max-width: auto;
+  th {
+    min-width: 40px;
+    &.date {
+      min-width: 100px;
+    }
+    &.name {
+      min-width: 150px;
+    }
+  }
+}
