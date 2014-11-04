@@ -1,0 +1,4 @@
+<%= form_tag mockup_target_path, method: :get, role: 'form' do %>
+<%= render 'buyer', buyers: @candidate_buyers %>
+<%= submit_tag("获取置入资产", class: "btn btn-primary") %>
+<% end %>

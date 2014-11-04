@@ -1,4 +1,5 @@
 <h1>行业: 食品制造业</h1>
+<%= form_tag mockup_target_path, method: :get, role: 'form' do %>
 <div class="target-table-container">
   <table class="table table-striped table-bordered target-table">
     <thead>
@@ -50,7 +51,7 @@
     <tr>
       <td>
         <label>
-          <input type="checkbox" id="blankCheckbox" value="option1">
+          <%= check_box_tag "target_ids[]", deal.target_id %>
         </label>
       </td>
       <td><%= deal.buyer.name %></td>
@@ -91,3 +92,4 @@
   </table>
 </div>
 <%= submit_tag("获取置入资产", class: "btn btn-primary") %>
+<% end %>
