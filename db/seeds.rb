@@ -16,11 +16,11 @@ Target.delete_all
 Buyer.delete_all
 
 if Deal.all.size == 0
-  20.times { FactoryGirl.create :deal }
+  40.times { FactoryGirl.create :deal }
 end
 
 if Target.where(is_sold: false).size == 0
-  50.times { FactoryGirl.create :target }
+  80.times { FactoryGirl.create :target }
 end
 
-50.times { FactoryGirl.create :buyer }
+80.times { FactoryGirl.create :buyer }
