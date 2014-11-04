@@ -30,7 +30,7 @@ class MockupController < ApplicationController
   def similar_target
     @target_ids = params[:target_ids]
     @targets = Target.where(id: @target_ids).includes(:industry)
-    avg_total_assets = @targets.map(&:total_assets).reduce(&:+)
+    avg_total_assets = @targets.map(&:total_assets).reduce(&:+) / @target_ids.size
     @candidate_targets = Target.where('total_assets > ? and total_assets < ? and is_sold = ? and industry_id = ?',
                                        avg_total_assets * 0.7,
                                        avg_total_assets * 1.3,
