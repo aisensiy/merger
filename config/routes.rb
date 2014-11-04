@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'mockup#index'
+
   get 'mockup/index'
 
   get 'mockup/buyer'

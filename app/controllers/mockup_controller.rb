@@ -1,6 +1,6 @@
 class MockupController < ApplicationController
   def index
-    @industries = Industry.all
+    @industries = Industry.where('id < 6')
   end
 
   def buyer
