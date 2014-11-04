@@ -31,5 +31,10 @@ FactoryGirl.define do
     static_earnings 49.1
     trading_earnings 14.7
     three_year_avg_earnings 11.25
+
+    after(:create) do |deal|
+      deal.target.industry_id = deal.buyer.industry_id
+      deal.target.save!
+    end
   end
 end

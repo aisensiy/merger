@@ -11,6 +11,10 @@ if Industry.all.size == 0
   industry_list.each {|industry| Industry.create(name: industry)}
 end
 
+Deal.delete_all
+Target.delete_all
+Buyer.delete_all
+
 if Deal.all.size == 0
   20.times { FactoryGirl.create :deal }
 end
