@@ -1,2 +1,67 @@
-<h1>Mockup#target</h1>
-<p>Find me in app/views/mockup/target.html.erb</p>
+<h1>行业: 食品制造业</h1>
+<div class="target-table-container">
+  <table class="table table-striped table-bordered target-table">
+    <thead>
+    <tr>
+      <th></th>
+      <th colspan="8">基本信息</th>
+      <th colspan="13">置入资产财务数据</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th class="name">名称</th>
+      <th class="name">控股人</th>
+      <th class="date">成立时间</th>
+      <th class="name">行业</th>
+      <th class="name">业务描述</th>
+      <th class="name">地址</th>
+      <th>注册资本</th>
+      <th>大股东持股比例</th>
+
+      <th>净资产</th>
+      <th>债务</th>
+      <th>当前总资产</th>
+      <th>t - 1 总资产</th>
+      <th>t - 2 总资产</th>
+      <th>t - 1 净资产</th>
+      <th>t - 2 净资产</th>
+      <th>t - 1 营业收入</th>
+      <th>t - 2 营业收入</th>
+      <th>t - 1 净利润</th>
+      <th>当年净利润</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @targets.each do |target| %>
+    <tr>
+      <td>
+        <label>
+          <input type="checkbox" id="blankCheckbox" value="option1">
+        </label>
+      </td>
+      <td><%= target.name %></td>
+      <td><%= target.owner %></td>
+      <td><%= target.create_date %></td>
+      <td><%= target.industry.name %></td>
+      <td><%= target.description %></td>
+      <td><%= target.address %></td>
+      <td><%= number_with_delimiter target.registered_capital %></td>
+      <td><%= number_to_percentage target.big_stockholder_percent * 100 %></td>
+
+      <td><%= number_with_delimiter target.net_assets %></td>
+      <td><%= number_with_delimiter target.liabilities %></td>
+      <td><%= number_with_delimiter target.total_assets %></td>
+      <td><%= number_with_delimiter target.t_minus_1_total_assets %></td>
+      <td><%= number_with_delimiter target.t_minus_2_total_assets %></td>
+      <td><%= number_with_delimiter target.t_minus_1_net_assets %></td>
+      <td><%= number_with_delimiter target.t_minus_2_net_assets %></td>
+      <td><%= number_with_delimiter target.t_minus_1_operating_income %></td>
+      <td><%= number_with_delimiter target.t_minus_2_operating_income %></td>
+      <td><%= number_with_delimiter target.t_minus_1_net_profit %></td>
+      <td><%= number_with_delimiter target.net_profit %></td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<%= submit_tag("获取置入资产", class: "btn btn-primary") %>
