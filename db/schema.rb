@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141101091310) do
+ActiveRecord::Schema.define(version: 20141115100920) do
 
   create_table "buyers", force: true do |t|
     t.string   "name"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 20141101091310) do
     t.integer  "industry_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "market_value",               limit: 24
+    t.float    "t_minus_1_market_value",     limit: 24
+    t.float    "t_minus_2_market_value",     limit: 24
+    t.float    "net_profit",                 limit: 24
+    t.float    "t_minus_1_net_profit",       limit: 24
+    t.float    "t_minus_2_net_profit",       limit: 24
+    t.float    "operating_income",           limit: 24
+    t.float    "t_minus_1_operating_income", limit: 24
+    t.float    "t_minus_2_operating_income", limit: 24
   end
 
   create_table "deals", force: true do |t|

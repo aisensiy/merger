@@ -8,6 +8,10 @@
     </tr>
     <tr>
       <th></th>
+      <% APP_CONFIG['target'].each do |col, name| %>
+      <th><%= name %></th>
+      <% end %>
+      <!--
       <th class="name">名称</th>
       <th class="name">控股人</th>
       <th class="date">成立时间</th>
@@ -28,6 +32,7 @@
       <th>t - 2 营业收入</th>
       <th>t - 1 净利润</th>
       <th>当年净利润</th>
+      -->
     </tr>
     </thead>
     <tbody>
