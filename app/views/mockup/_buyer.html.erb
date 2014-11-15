@@ -2,10 +2,9 @@
   <thead>
   <tr>
     <th></th>
-    <th>代码</th>
-    <th>名称</th>
-    <th>控股人</th>
-    <th>行业</th>
+    <% APP_CONFIG['buyer'].each do |col, name| %>
+    <th><%= name %></th>
+    <% end %>
   </tr>
   </thead>
   <tbody>
@@ -24,6 +23,15 @@
         <td><%= buyer.name %></td>
         <td><%= buyer.owner %></td>
         <td><%= buyer.industry.name %></td>
+        <td><%= buyer.market_value %></td>
+        <td><%= buyer.t_minus_1_market_value %></td>
+        <td><%= buyer.t_minus_2_market_value %></td>
+        <td><%= buyer.net_profit %></td>
+        <td><%= buyer.t_minus_1_net_profit %></td>
+        <td><%= buyer.t_minus_2_net_profit %></td>
+        <td><%= buyer.operating_income %></td>
+        <td><%= buyer.t_minus_1_operating_income %></td>
+        <td><%= buyer.t_minus_2_operating_income %></td>
       </tr>
   <% end %>
   </tbody>
