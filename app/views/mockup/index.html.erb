@@ -3,7 +3,7 @@
 选择行业 -> 筛选感兴趣的企业 -> 获取与之相似的并且有过并购的企业 -> 获取并购企业的置入资产 -> 获取与置入资产类似的企业
 </pre>
 <h1>选择要查询的行业</h1>
-<%= form_tag mockup_buyer_path, method: :get, role: 'form' do %>
+<%= form_tag mockup_select_buyer_attrs_path, method: :get, role: 'form' do %>
   <div class="form-group">
     <%= select_tag(:industry_id, options_for_select(@industries.map { |ind| [ind.name, ind.id] }), class: 'form-control') %>
   </div>
