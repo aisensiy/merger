@@ -15,4 +15,5 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require jquery.jqGrid
-//= require_tree .
+//= require d3
+//= require underscore
