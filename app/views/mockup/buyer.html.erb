@@ -1,6 +1,16 @@
+<script>
+var buyers = <%= raw @buyers.to_json %>;
+var attrs = <%= raw @attrs.to_json %>;
+</script>
+
 <h1>行业: <%= @industry.name %></h1>
+<div class="filter"></div>
 <%= form_tag mockup_similar_buyer_path, method: :get, role: 'form' do %>
 <p><label class='bg-info'>蓝色</label>公司为有并购的公司</p>
 <%= render 'buyer', buyers: @buyers, attrs: @attrs %>
 <%= submit_tag("获取置入资产", class: "btn btn-primary") %>
+<% end %>
+
+<% content_for :js do %>
+<%= javascript_include_tag 'create_filter' %>
 <% end %>
