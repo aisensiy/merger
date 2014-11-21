@@ -17,3 +17,4 @@
 //= require jquery.jqGrid
 //= require d3
 //= require underscore
+//= require buyer.grid

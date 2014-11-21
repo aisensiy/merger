@@ -1,5 +1,5 @@
 class AttrFilter
-  constructor: (@container, @attr) ->
+  constructor: (@container, @attr, @callback) ->
     @width = $(@container).width()
     @height = 120
     @extent = null
@@ -49,8 +49,8 @@ class AttrFilter
           extent1[0] = Math.floor(extent0[0] / tick) * tick
           extent1[1] = Math.ceil(extent0[1] / tick) * tick
 
-
       d3.select(this).call(brush.extent(extent1))
+      self.callback(extent1) if self.callback
       self.extent = extent1
 
     brush = d3.svg.brush().x(x).extent([0, data[3].x])
