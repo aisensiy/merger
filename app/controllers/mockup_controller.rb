@@ -3,9 +3,18 @@ class MockupController < ApplicationController
     @industries = Industry.where('id < 6')
   end
 
+  def select_buyer_attrs
+    @industry_id = params[:industry_id]
+  end
+
   def buyer
     @industry = Industry.find(params[:industry_id])
-    @buyers = Buyer.where(industry_id: params[:industry_id]).includes(:industry)
+    @attrs = params[:selected_attrs]
+    @buyers = Buyer.where(industry_id: params[:industry_id])
+                   .includes(:industry, :deals)
+                   .select do |buyer|
+                     buyer.deals.count > 0
+                   end
   end
 
   def similar_buyer

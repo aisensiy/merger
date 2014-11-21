@@ -8,11 +8,12 @@ buyer_attrs: &buyer_attrs
   operating_income: 营业收入
   t_minus_1_operating_income: t - 1 营业收入
   t_minus_2_operating_income: t - 2 营业收入
-buyer:
+buyer_fixed_attrs: &buyer_fixed_attrs
   code: 代码
   name: 名称
   owner: 控股人
-  industry: 行业
+buyer:
+  <<: *buyer_fixed_attrs
   <<: *buyer_attrs
 target_attrs: &target_attrs
   registered_capital: 注册资本
@@ -28,11 +29,13 @@ target_attrs: &target_attrs
   t_minus_2_operating_income: t - 2 营业收入
   t_minus_1_net_profit: t - 1 净利润
   net_profit: 当年净利润
-target:
+target_fixed_attrs: &target_fixed_attrs
   name: 名称
   owner: 控股人
   create_date: 成立时间
   industry: 行业
   description: 业务描述
   address: 地址
+target:
+  <<: *target_fixed_attrs
   <<: *target_attrs

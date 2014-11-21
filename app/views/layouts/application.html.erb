@@ -6,7 +6,7 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= controller_name + "-ctrl" %> <%= action_name + "-md" %>">
 
 <%= render 'layouts/top_navi' %>
 
@@ -19,5 +19,6 @@
 </div>
 
 <%= javascript_include_tag 'application' %>
+<%= yield :js %>
 </body>
 </html>

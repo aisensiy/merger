@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get 'mockup/index'
 
+  get 'mockup/select_buyer_attrs'
+
   get 'mockup/buyer'
 
   get 'mockup/buy'
