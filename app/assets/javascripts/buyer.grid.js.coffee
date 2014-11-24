@@ -1,8 +1,8 @@
 #= require filter
 
-build_models = (attrs) ->
+build_models = (attrs, type) ->
   _.map(attrs, (attr) ->
-    {'name': attr}
+    {'name': attr, 'sorttype': type}
   )
 
 filted_buyers = null
@@ -18,9 +18,10 @@ build_jqgrid = () ->
     datatype: 'local'
     data: buyers
     colNames: _.values(fixed_attrs).concat(_.values(attrs)) #['代码', '名称', '控股人', '市值', 't - 1 市值', 't - 2 市值']
-    colModel: build_models(_.keys(fixed_attrs).concat(_.keys(attrs)))
+    colModel: build_models(_.keys(fixed_attrs), 'string')
+                  .concat(build_models(_.keys(attrs), 'integer'))
     height: 'auto'
-    caption: "Test Grid"
+    caption: ""
 
   $(window).triggerHandler('resize.jqGrid')
 
