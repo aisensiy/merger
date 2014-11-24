@@ -5,7 +5,8 @@ var attrs = <%= raw APP_CONFIG['buyer_attrs'].select {|k, v| @attrs.include?(k) 
 </script>
 
 <h1>行业: <%= @industry.name %></h1>
-<div class="filter"></div>
+<div class="filter row">
+</div>
 <table id='jq-grid'></table>
 <div id="pager"></div>
 

@@ -6,11 +6,9 @@ build_models = (attrs) ->
   )
 
 filted_buyers = null
+grid_selector = '#jq-grid'
 
-$ ->
-  return if !$('body.mockup-ctrl.buyer-md').size()
-
-  grid_selector = '#jq-grid'
+build_jqgrid = () ->
   $parent_column = $(grid_selector).closest('[class*="col-"]')
   $(window).on('resize.jqGrid', () ->
     $(grid_selector).jqGrid('setGridWidth', $parent_column.width())
@@ -26,9 +24,14 @@ $ ->
 
   $(window).triggerHandler('resize.jqGrid')
 
+
+
+$ ->
+  return if !$('body.mockup-ctrl.buyer-md').size()
+
   filters = _.map(attrs, (name, attr) ->
     container = "div.#{attr}"
-    $("<div></div>").attr({'class': attr})
+    $("<div></div>").attr({'class': "#{attr} col-md-6"})
         .appendTo('.filter')
 
     callback = ((attr) ->
@@ -56,3 +59,5 @@ $ ->
     filter.build(buyers)
     filter
   )
+
+  build_jqgrid()
