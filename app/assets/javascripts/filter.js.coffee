@@ -6,7 +6,7 @@ class AttrFilter
 
   build: (buyers) ->
     margin =
-      top: 10
+      top: 15
       right: 10
       bottom: 50
       left: 10
@@ -17,14 +17,14 @@ class AttrFilter
     svg = d3.select(@container).append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
-            .append("g")
+
+    g = svg.append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
     svg.append('text')
-        .attr('class', 'text')
-        .attr('x', width / 2).attr('y', 0)
+        .attr('class', 'title')
+        .attr('x', width / 2 - 70).attr('y', 10)
         .text(@attr_text)
-        .attr("text-anchor", "middle")
         .style("font-size", "10px")
 
     values = _.map(buyers, (v) => v[@attr])
@@ -56,16 +56,18 @@ class AttrFilter
           extent1[0] = Math.floor(extent0[0] / tick) * tick
           extent1[1] = Math.ceil(extent0[1] / tick) * tick
 
+      extent1 = _.map(extent1, Math.round)
       d3.select(this).call(brush.extent(extent1))
       self.callback(extent1) if self.callback
       self.extent = extent1
+      svg.select('text.title').text("#{self.attr_text} #{extent1[0]} - #{extent1[1]}")
 
     brush = d3.svg.brush().x(x).extent([0, data[3].x])
         .on('brush', brushed)
 
     xAxis = d3.svg.axis().scale(x).orient("bottom")
 
-    bar = svg.selectAll('g').data(data).enter().append('g')
+    bar = g.selectAll('g').data(data).enter().append('g')
              .attr('transform', (d) ->
                "translate(#{x(d.x)}, #{y(d.y)})"
              )
@@ -85,7 +87,7 @@ class AttrFilter
        .attr("text-anchor", "middle")
        .text((d) -> d.y)
 
-    svg.append("g")
+    g.append("g")
        .attr("class", "x axis")
        .attr("transform", "translate(0," + height + ")")
        .call(xAxis)
@@ -95,7 +97,7 @@ class AttrFilter
        .attr("dy", ".15em")
        .attr("transform", "rotate(-35)")
 
-    gBrush = svg.append("g")
+    gBrush = g.append("g")
         .attr("class", "brush")
         .call(brush)
 
