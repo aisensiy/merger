@@ -42,8 +42,8 @@ $ ->
             continue
           extent = filter.extent
           attr = filter.attr
-          console.log extent
-          console.log attr
+          # console.log extent
+          # console.log attr
           filted_buyers = _.filter(filted_buyers, (buyer) ->
             buyer[attr] <= extent[1] and buyer[attr] >= extent[0]
           )
@@ -55,7 +55,7 @@ $ ->
         $(grid_selector).trigger('reloadGrid')
     )(attr)
 
-    filter = new AttrFilter(container, attr, callback)
+    filter = new AttrFilter(container, attr, name, callback)
     filter.build(buyers)
     filter
   )

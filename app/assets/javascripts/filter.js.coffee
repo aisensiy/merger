@@ -1,5 +1,5 @@
 class AttrFilter
-  constructor: (@container, @attr, @callback) ->
+  constructor: (@container, @attr, @attr_text, @callback) ->
     @width = $(@container).width()
     @height = 120
     @extent = null
@@ -19,6 +19,13 @@ class AttrFilter
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+
+    svg.append('text')
+        .attr('class', 'text')
+        .attr('x', width / 2).attr('y', 0)
+        .text(@attr_text)
+        .attr("text-anchor", "middle")
+        .style("font-size", "10px")
 
     values = _.map(buyers, (v) => v[@attr])
     x = d3.scale.linear().range([0, width]).domain([0, d3.max(values)])
