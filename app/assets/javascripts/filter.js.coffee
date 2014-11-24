@@ -8,7 +8,7 @@ class AttrFilter
     margin =
       top: 10
       right: 10
-      bottom: 20
+      bottom: 50
       left: 10
 
     width = @width - margin.left - margin.right
@@ -72,7 +72,7 @@ class AttrFilter
        .attr('width', x(data[0].dx) - 1)
 
     bar.append("text")
-       .attr("dy", "10px")
+       .attr("dy", "8px")
        .attr("y", 6)
        .attr("x", x(data[0].dx) / 2)
        .attr("text-anchor", "middle")
@@ -82,6 +82,11 @@ class AttrFilter
        .attr("class", "x axis")
        .attr("transform", "translate(0," + height + ")")
        .call(xAxis)
+       .selectAll('text')
+       .style('text-anchor', 'end')
+       .attr("dx", "-.8em")
+       .attr("dy", ".15em")
+       .attr("transform", "rotate(-35)")
 
     gBrush = svg.append("g")
         .attr("class", "brush")
