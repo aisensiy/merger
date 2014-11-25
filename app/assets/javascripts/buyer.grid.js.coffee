@@ -21,6 +21,7 @@ build_jqgrid = () ->
     colModel: build_models(_.keys(fixed_attrs), 'string')
                   .concat(build_models(_.keys(attrs), 'integer'))
     height: 'auto'
+    multiselect: true
     caption: ""
 
   $(window).triggerHandler('resize.jqGrid')
@@ -62,3 +63,14 @@ $ ->
   )
 
   build_jqgrid()
+
+  submit_selected_buyers = () ->
+    ids = $(grid_selector).jqGrid('getGridParam','selarrrow')
+    params = {
+      'ids': ids
+      'selected_attrs': _.keys(attrs)
+      'industry_id': buyers[0].industry_id
+    }
+    window.location = "/mockup/similar_buyer?#{$.param(params)}"
+
+  $('#get_similar_buyer').click(submit_selected_buyers)
