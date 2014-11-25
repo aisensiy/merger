@@ -19,7 +19,9 @@
     <% end %>
         <td>
           <label>
+            <% if can_check %>
             <%= check_box_tag "buyer_ids[]", buyer.id %>
+            <% end %>
           </label>
         </td>
         <td><%= buyer.code %></td>

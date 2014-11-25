@@ -18,13 +18,17 @@ class MockupController < ApplicationController
   end
 
   def similar_buyer
-    @buyer_ids = params[:buyer_ids]
+    @buyer_ids = params[:ids]
+    @attrs = params[:selected_attrs]
+    @industry_id = params[:industry_id]
     @buyers = Buyer.find(@buyer_ids)
-    @candidate_buyers = Buyer.where(industry_id: @buyers[0].industry_id)
-                             .where('id not in (?)', @buyer_ids)
+    @candidate_buyers = Buyer.where('industry_id = ?', @industry_id)
                              .includes(:deals, :industry).select do |buyer|
-                                buyer.deals.count > 0
+                                buyer.deals.count == 0
                              end
+    @result = @buyers.map do |buyer|
+      buyer.similar_buyers(@candidate_buyers, @attrs)
+    end.reduce(&:+).map { |v| v[0] }.uniq
   end
 
   def buy
