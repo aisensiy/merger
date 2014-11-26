@@ -3,13 +3,18 @@ class MockupController < ApplicationController
     @industries = Industry.where('id < 6')
   end
 
-  def select_buyer_attrs
+  def select_attrs
     @industry_id = params[:industry_id]
   end
 
   def buyer
+    @attrs = params[:buyer_attrs]
+
+    session[:buyer_attrs] = @attrs
+    session[:target_attrs] = params[:target_attrs]
+    session[:industry_id] = params[:industry_id]
+
     @industry = Industry.find(params[:industry_id])
-    @attrs = params[:selected_attrs]
     @buyers = Buyer.where(industry_id: params[:industry_id])
                    .includes(:industry, :deals)
                    .select do |buyer|
@@ -19,8 +24,11 @@ class MockupController < ApplicationController
 
   def similar_buyer
     @buyer_ids = params[:ids]
-    @attrs = params[:selected_attrs]
-    @industry_id = params[:industry_id]
+    @attrs = session[:buyer_attrs] || params[:buyer_attrs]
+
+    session[:selected_buyers] = @buyer_ids
+
+    @industry_id = session[:industry_id] || params[:industry_id]
     @buyers = Buyer.find(@buyer_ids)
     @candidate_buyers = Buyer.where('industry_id = ?', @industry_id)
                              .includes(:deals, :industry).select do |buyer|
@@ -34,20 +42,16 @@ class MockupController < ApplicationController
   def buy
   end
 
-  def target
-    @buyer_ids = params[:buyer_ids]
+  def similar_target
+    @attrs = session[:target_attrs]
+    @buyer_ids = session[:selected_buyers]
     @targets = Deal.where('buyer_id in (?)', @buyer_ids)
                    .includes(target: [:industry]).map(&:target)
-  end
 
-  def similar_target
-    @target_ids = params[:target_ids]
-    @targets = Target.where(id: @target_ids).includes(:industry)
-    avg_total_assets = @targets.map(&:total_assets).reduce(&:+) / @target_ids.size
-    @candidate_targets = Target.where('total_assets > ? and total_assets < ? and is_sold = ? and industry_id = ?',
-                                       avg_total_assets * 0.7,
-                                       avg_total_assets * 1.3,
+    @candidate_targets = Target.where('is_sold = ? and industry_id = ?',
                                        false,
                                        @targets[0].industry_id)
+
+    @result = Target.similar_targets(@targets, @candidate_targets, @attrs).map { |v| v[0] }
   end
 end

@@ -33,7 +33,6 @@ target_fixed_attrs: &target_fixed_attrs
   name: 名称
   owner: 控股人
   create_date: 成立时间
-  industry: 行业
   description: 业务描述
   address: 地址
 target:
