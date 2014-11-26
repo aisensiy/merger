@@ -1,7 +1,4 @@
 module SimilarCalculatable extend ActiveSupport::Concern
-
-  private
-
   def transpose(matrix)
     m = matrix.size
     n = matrix[0].size
