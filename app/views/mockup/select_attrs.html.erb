@@ -1,0 +1,24 @@
+<%= form_tag mockup_buyer_path, method: :get, role: 'form' do %>
+  <h3>选择卖家的评价参数</h3>
+  <% APP_CONFIG['buyer_attrs'].each do |col, name| %>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="buyer_attrs[]" value="<%= col %>">
+      <%= name %>
+    </label>
+  </div>
+  <% end %>
+
+  <h3>选择考虑置入资产的评价参数</h3>
+  <% APP_CONFIG['target_attrs'].each do |col, name| %>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="target_attrs[]" value="<%= col %>">
+      <%= name %>
+    </label>
+  </div>
+  <% end %>
+
+  <%= hidden_field_tag 'industry_id', @industry_id %>
+  <%= submit_tag("筛选", class: "btn btn-primary") %>
+<% end %>

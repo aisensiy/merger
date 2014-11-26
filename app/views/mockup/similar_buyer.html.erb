@@ -1,5 +1,8 @@
-<h1>相似的企业</h1>
+<h2>选择的企业</h2>
+<%= render 'buyer', buyers: @buyers, can_check: false %>
+<h2>相似的企业</h2>
+<p>请在这里选择一个感兴趣的卖家</p>
 <%= form_tag mockup_target_path, method: :get, role: 'form' do %>
-<%= render 'buyer', buyers: @candidate_buyers %>
+<%= render 'buyer', buyers: @result, can_check: true %>
 <%= submit_tag("获取置入资产", class: "btn btn-primary") %>
 <% end %>
