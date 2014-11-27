@@ -22,3 +22,4 @@
 //= require target.grid
 //= require get_similar_buyers
 //= require get_similar_targets
+//= require show_result

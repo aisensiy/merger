@@ -62,6 +62,15 @@ class TotalController < ApplicationController
   end
 
   def show_result
+    selected_target_id = params[:selected_target_id]
+    session[:selected_target_id] = selected_target_id
+    @selected_target = Target.find(selected_target_id)
 
+    @buyer_attrs = session[:buyer_attrs]
+    @target_attrs = session[:target_attrs]
+
+    @industry = Industry.find(session[:industry_id])
+    @reference_buyers = Buyer.find(session[:reference_buyer_ids])
+    @selected_buyer = Buyer.find(session[:selected_buyer_id])
   end
 end
