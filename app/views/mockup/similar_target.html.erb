@@ -1,10 +1,14 @@
 <script>
 var buyers = <%= raw @result.to_json %>;
 var fixed_attrs = <%= raw APP_CONFIG['target_fixed_attrs'].to_json %>;
-var attrs = <%= raw APP_CONFIG['target_attrs'].select {|k, v| @attrs.include?(k) }.to_json %>;
+var attrs = <%= raw APP_CONFIG['target_attrs'].select {|k, v| @target_attrs.include?(k) }.to_json %>;
 </script>
 
-<h2>行业: <%= @industry.name %></h2>
+<h1>行业: <%= @industry.name %></h1>
+<h2>参考的买家</h2>
+<%= render 'buyer', buyers: @reference_buyers, can_check: false, attrs: @buyer_attrs %>
+<h2>选择的买家</h2>
+<%= render 'buyer', buyers: [@buyer], can_check: false, attrs: @buyer_attrs %>
 <p>下面是所选择的参数的直方图，通过拖拽灰色区域可以选择参数的范围以便对公司进行筛选</p>
 <hr>
 <div class="filter row">

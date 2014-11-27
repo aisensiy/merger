@@ -8,9 +8,9 @@ class MockupController < ApplicationController
   end
 
   def buyer
-    @attrs = params[:buyer_attrs]
+    @buyer_attrs = params[:buyer_attrs]
 
-    session[:buyer_attrs] = @attrs
+    session[:buyer_attrs] = @buyer_attrs
     session[:target_attrs] = params[:target_attrs]
     session[:industry_id] = params[:industry_id]
 
@@ -23,19 +23,19 @@ class MockupController < ApplicationController
   end
 
   def similar_buyer
-    @buyer_ids = params[:ids]
-    @attrs = session[:buyer_attrs] || params[:buyer_attrs]
+    buyer_ids = params[:ids]
+    @buyer_attrs = session[:buyer_attrs] || params[:buyer_attrs]
 
-    session[:selected_buyers] = @buyer_ids
+    session[:reference_buyer_ids] = buyer_ids
 
-    @industry_id = session[:industry_id] || params[:industry_id]
-    @buyers = Buyer.find(@buyer_ids)
-    @candidate_buyers = Buyer.where('industry_id = ?', @industry_id)
+    industry_id = session[:industry_id] || params[:industry_id]
+    @reference_buyers = Buyer.find(buyer_ids)
+    candidate_buyers = Buyer.where('industry_id = ?', industry_id)
                              .includes(:deals, :industry).select do |buyer|
                                 buyer.deals.count == 0
                              end
-    @result = @buyers.map do |buyer|
-      buyer.similar_buyers(@candidate_buyers, @attrs)
+    @result = @reference_buyers.map do |buyer|
+      buyer.similar_buyers(candidate_buyers, @buyer_attrs)
     end.reduce(&:+).map { |v| v[0] }.uniq
   end
 
@@ -43,16 +43,21 @@ class MockupController < ApplicationController
   end
 
   def similar_target
+    @buyer_attrs = session[:buyer_attrs] || params[:buyer_attrs]
+    @target_attrs = session[:target_attrs]
     @industry = Industry.find(session[:industry_id] || params[:industry_id])
-    @attrs = session[:target_attrs]
-    @buyer_ids = session[:selected_buyers]
-    @targets = Deal.where('buyer_id in (?)', @buyer_ids)
-                   .includes(target: [:industry]).map(&:target)
 
+    reference_buyer_ids = session[:reference_buyer_ids]
+    @reference_buyers = Buyer.find(reference_buyer_ids)
+
+    @selected_buyer = Buyer.find(session[:selected_buyer])
+
+    @targets = Deal.where('buyer_id in (?)', reference_buyer_ids)
+                   .includes(target: [:industry]).map(&:target)
     @candidate_targets = Target.where('is_sold = ? and industry_id = ?',
                                        false,
                                        @targets[0].industry_id)
 
-    @result = Target.similar_targets(@targets, @candidate_targets, @attrs).map { |v| v[0] }
+    @result = Target.similar_targets(@targets, @candidate_targets, @target_attrs).map { |v| v[0] }
   end
 end

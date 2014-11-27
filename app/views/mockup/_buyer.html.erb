@@ -5,7 +5,7 @@
     <% APP_CONFIG['buyer_fixed_attrs'].each do |col, name| %>
     <th><%= name %></th>
     <% end %>
-    <% @attrs.each do |col| %>
+    <% attrs.each do |col| %>
     <th><%= APP_CONFIG['buyer'][col] %></th>
     <% end %>
   </tr>
@@ -28,7 +28,7 @@
         <td><%= buyer.name %></td>
         <td><%= buyer.owner %></td>
 
-        <% @attrs.each do |column| %>
+        <% attrs.each do |column| %>
         <td><%= buyer.send(column.to_sym) %></td>
         <% end %>
       </tr>
