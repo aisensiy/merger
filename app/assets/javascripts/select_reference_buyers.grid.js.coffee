@@ -1,5 +1,3 @@
-#= require filter
-
 build_models = (attrs, type) ->
   _.map(attrs, (attr) ->
     {'name': attr, 'sorttype': type}
@@ -25,8 +23,6 @@ build_jqgrid = () ->
     caption: ""
 
   $(window).triggerHandler('resize.jqGrid')
-
-
 
 $ ->
   return if !$('body.total-ctrl.select_reference_buyers-md').size()
