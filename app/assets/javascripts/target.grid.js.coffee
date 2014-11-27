@@ -28,7 +28,7 @@ build_jqgrid = () ->
 
 
 $ ->
-  return if !$('body.mockup-ctrl.similar_target-md').size()
+  return if !$('body.total-ctrl.get_similar_targets-md').size()
 
   filters = _.map(attrs, (name, attr) ->
     container = "div.#{attr}"
