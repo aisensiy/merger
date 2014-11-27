@@ -1,5 +1,3 @@
-#= require filter
-
 build_models = (attrs, type) ->
   _.map(attrs, (attr) ->
     {'name': attr, 'sorttype': type}
@@ -26,10 +24,8 @@ build_jqgrid = () ->
 
   $(window).triggerHandler('resize.jqGrid')
 
-
-
 $ ->
-  return if !$('body.mockup-ctrl.buyer-md').size()
+  return if !$('body.total-ctrl.select_reference_buyers-md').size()
 
   filters = _.map(attrs, (name, attr) ->
     container = "div.#{attr}"
@@ -71,6 +67,6 @@ $ ->
       'selected_attrs': _.keys(attrs)
       'industry_id': buyers[0].industry_id
     }
-    window.location = "/mockup/similar_buyer?#{$.param(params)}"
+    window.location = "#{$(this).attr('url')}?#{$.param(params)}"
 
   $('#get_similar_buyer').click(submit_selected_buyers)

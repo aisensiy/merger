@@ -17,5 +17,9 @@
 //= require jquery.jqGrid
 //= require d3
 //= require underscore
-//= require buyer.grid
-//= require target.grid
+//= require filter
+//= require build_grid
+//= require select_reference_buyers.grid.js.coffee
+//= require get_similar_buyers
+//= require get_similar_targets
+//= require show_result

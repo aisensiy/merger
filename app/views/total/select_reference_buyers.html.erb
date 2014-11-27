@@ -1,7 +1,7 @@
 <script>
 var buyers = <%= raw @buyers.to_json %>;
 var fixed_attrs = <%= raw APP_CONFIG['buyer_fixed_attrs'].to_json %>;
-var attrs = <%= raw APP_CONFIG['buyer_attrs'].select {|k, v| @attrs.include?(k) }.to_json %>;
+var attrs = <%= raw APP_CONFIG['buyer_attrs'].select {|k, v| @buyer_attrs.include?(k) }.to_json %>;
 </script>
 
 <h2>行业: <%= @industry.name %></h2>
@@ -11,7 +11,7 @@ var attrs = <%= raw APP_CONFIG['buyer_attrs'].select {|k, v| @attrs.include?(k) 
 </div>
 <table id='jq-grid'></table>
 <div id="pager"></div>
-<button id="get_similar_buyer" class="btn btn-primary">获取相似的公司</button>
+<button id="get_similar_buyer" class="btn btn-primary" url="<%= total_get_similar_buyers_url %>">获取相似的公司</button>
 
 <% content_for :js do %>
 <%= javascript_include_tag 'create_filter' %>
