@@ -18,3 +18,4 @@
 //= require d3
 //= require underscore
 //= require buyer.grid
+//= require target.grid

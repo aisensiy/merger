@@ -43,6 +43,7 @@ class MockupController < ApplicationController
   end
 
   def similar_target
+    @industry = Industry.find(session[:industry_id] || params[:industry_id])
     @attrs = session[:target_attrs]
     @buyer_ids = session[:selected_buyers]
     @targets = Deal.where('buyer_id in (?)', @buyer_ids)
