@@ -1,3 +1,19 @@
+.flow {
+  li {
+    padding: 3px 5px;
+  }
+}
+
+body.select_industry-md li.select_industry,
+body.select_attrs-md li.select_attrs,
+body.select_reference_buyers-md li.select_reference_buyers,
+body.get_similar_buyers-md li.get_similar_buyers,
+body.get_similar_targets-md li.get_similar_targets,
+body.show_result-md li.show_result {
+  background: #f5f5f5;
+}
+
+
 .target-table-container {
   overflow: auto;
 }

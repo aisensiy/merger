@@ -8,6 +8,7 @@ var fixed_buyer_attrs = <%= raw APP_CONFIG['buyer_fixed_attrs'].to_json %>;
 var buyer_attrs = <%= raw APP_CONFIG['buyer_attrs'].select { |k, v| @buyer_attrs.include?(k) }.to_json %>;
 </script>
 
+<%= render "flow" %>
 <h1>行业: <%= @industry.name %></h1>
 <h2>参考的买家</h2>
 <div id="reference-buyer-grid">
