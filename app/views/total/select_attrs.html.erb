@@ -1,3 +1,5 @@
+<%= render "flow" %>
+
 <%= form_tag total_select_reference_buyers_path, method: :get, role: 'form' do %>
   <h3>选择卖家的评价参数</h3>
   <% APP_CONFIG['buyer_attrs'].each do |col, name| %>
