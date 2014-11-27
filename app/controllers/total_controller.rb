@@ -29,6 +29,7 @@ class TotalController < ApplicationController
     session[:reference_buyer_ids] = buyer_ids
 
     industry_id = session[:industry_id] || params[:industry_id]
+    @industry = Industry.find(industry_id)
     @reference_buyers = Buyer.find(buyer_ids)
     candidate_buyers = Buyer.where('industry_id = ?', industry_id)
     .includes(:deals, :industry).select do |buyer|

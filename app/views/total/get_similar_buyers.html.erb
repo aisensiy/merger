@@ -1,8 +1,22 @@
-<h2>选择的企业</h2>
-<%= render 'buyer', buyers: @reference_buyers, can_check: false, attrs: @buyer_attrs %>
+<script>
+  var reference_buyers = <%= raw @reference_buyers.to_json %>;
+  var result = <%= raw @result.to_json %>;
+  var fixed_buyer_attrs = <%= raw APP_CONFIG['buyer_fixed_attrs'].to_json %>;
+  var buyer_attrs = <%= raw APP_CONFIG['buyer_attrs'].select { |k, v| @buyer_attrs.include?(k) }.to_json %>;
+</script>
+
+<h1>行业: <%= @industry.name %></h1>
+<h2>参考的卖家</h2>
+<div id="reference-buyer-grid">
+  <table id="reference-buyer-grid-table"></table>
+  <div class="pager"></div>
+</div>
+
 <h2>相似的企业</h2>
 <p>请在这里选择一个感兴趣的卖家</p>
-<%= form_tag total_get_similar_targets_path, method: :get, role: 'form' do %>
-<%= render 'buyer', buyers: @result, can_check: true, attrs: @buyer_attrs %>
-<%= submit_tag("获取置入资产", class: "btn btn-primary") %>
-<% end %>
+<div id="similar-buyer-grid">
+  <table id="similar-buyer-grid-table"></table>
+  <div class="pager"></div>
+</div>
+
+<button id="get_similar_target" class="btn btn-primary" url="<%= total_get_similar_targets_url %>">选择</button>

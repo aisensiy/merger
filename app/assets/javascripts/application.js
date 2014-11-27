@@ -19,3 +19,4 @@
 //= require underscore
 //= require buyer.grid
 //= require target.grid
+//= require get_similar_buyers
