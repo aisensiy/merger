@@ -1,19 +1,17 @@
 Rails.application.routes.draw do
-  root 'mockup#index'
+  root 'total#select_industry'
 
-  get 'mockup/index'
+  get 'total/select_industry'
 
-  get 'mockup/select_attrs'
+  get 'total/select_attrs'
 
-  get 'mockup/buyer'
+  get 'total/select_reference_buyers'
 
-  get 'mockup/buy'
+  get 'total/get_similar_buyers'
 
-  get 'mockup/target'
+  get 'total/get_similar_targets'
 
-  get 'mockup/similar_target'
-
-  get 'mockup/similar_buyer'
+  get 'total/show_result'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
