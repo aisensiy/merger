@@ -40,7 +40,10 @@ class TotalController < ApplicationController
     end.reduce(&:+).map { |v| v[0] }.uniq
   end
 
-    def get_similar_targets
+  def get_similar_targets
+    selected_buyer_id = params[:selected_buyer_id]
+    session[:selected_buyer_id] = selected_buyer_id
+
     @buyer_attrs = session[:buyer_attrs] || params[:buyer_attrs]
     @target_attrs = session[:target_attrs]
     @industry = Industry.find(session[:industry_id] || params[:industry_id])
@@ -48,10 +51,9 @@ class TotalController < ApplicationController
     reference_buyer_ids = session[:reference_buyer_ids]
     @reference_buyers = Buyer.find(reference_buyer_ids)
 
-    @selected_buyer = Buyer.find(session[:selected_buyer])
+    @selected_buyer = Buyer.find(selected_buyer_id)
 
-    @targets = Deal.where('buyer_id in (?)', reference_buyer_ids)
-    .includes(target: [:industry]).map(&:target)
+    @targets = Deal.where('buyer_id in (?)', reference_buyer_ids).includes(target: [:industry]).map(&:target)
     @candidate_targets = Target.where('is_sold = ? and industry_id = ?',
                                       false,
                                       @targets[0].industry_id)
