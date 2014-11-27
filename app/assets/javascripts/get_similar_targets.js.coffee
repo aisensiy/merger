@@ -1,7 +1,7 @@
 $ ->
   return if !$('body.total-ctrl.get_similar_targets-md').size()
 
-  grid_selector = '#similar-target-grid'
+  grid_selector = '#similar-target-grid-table'
 
   filted_buyers = null
   filters = _.map(target_attrs, (name, attr) ->
@@ -57,12 +57,12 @@ $ ->
   )
 
   click_button = () ->
-    id = $('#similar-buyer-grid-table').jqGrid('getGridParam','selrow')
+    id = $('#similar-target-grid-table').jqGrid('getGridParam','selrow')
     return if not id
 
     params = {
-      'selected_buyer_id': id
+      'selected_target_id': id
     }
     window.location = "#{$(this).attr('url')}?#{$.param(params)}"
 
-  $('#get_similar_target').click(click_button)
+  $('#get_selected_target').click(click_button)
