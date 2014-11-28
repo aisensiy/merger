@@ -7,6 +7,76 @@
   shape-rendering: crispEdges;
 }
 
+.market_value .bar rect {
+  fill: #1f77b4;
+}
+.t_minus_1_market_value .bar rect {
+  fill: #ff7f0e;
+}
+.t_minus_2_market_value .bar rect {
+  fill: #2ca02c;
+}
+
+.net_profit .bar rect {
+  fill: #d62728;
+}
+
+.t_minus_1_net_profit .bar rect {
+  fill: #9467bd;
+}
+
+.t_minus_2_net_profit .bar rect {
+  fill: #8c564b;
+}
+
+.operating_income .bar rect {
+  fill: #e377c2;
+}
+
+.t_minus_1_operating_income .bar rect {
+  fill: #7f7f7f;
+}
+
+.t_minus_2_operating_income .bar rect {
+  fill: #bcbd22;
+}
+
+.registered_capital .bar rect {
+  fill: #17becf;
+}
+
+.big_stockholder_percent .bar rect {
+  fill: #393b79;
+}
+
+.net_assets .bar rect {
+  fill: #637939;
+}
+
+.t_minus_1_net_assets .bar rect {
+  fill: #8ca252;
+}
+
+.t_minus_2_net_assets .bar rect {
+  fill: #b5cf6b;
+}
+
+.liabilities .bar rect {
+  fill: #8c6d31;
+}
+
+.total_assets .bar rect {
+  fill: #ad494a;
+}
+
+.t_minus_1_total_assets .bar rect {
+  fill: #d6616b;
+}
+
+.t_minus_2_total_assets .bar rect {
+  fill: #e7969c;
+}
+
 .bar text {
   fill: #fff;
 }
