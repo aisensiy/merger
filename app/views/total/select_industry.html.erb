@@ -5,5 +5,5 @@
       <%= select_tag(:industry_id,
                      options_for_select(@industries.map { |ind| [ind.name, ind.id] }), class: 'form-control') %>
     </div>
-    <%= submit_tag("Search", class: "btn btn-primary") %>
+    <%= submit_tag("选择", class: "btn btn-primary") %>
 <% end %>
