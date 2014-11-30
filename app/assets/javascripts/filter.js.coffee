@@ -1,7 +1,7 @@
 class AttrFilter
   constructor: (@container, @attr, @attr_text, @callback) ->
     @width = $(@container).width()
-    @height = 120
+    @height = 140
     @extent = null
 
   build: (buyers) ->
@@ -28,7 +28,7 @@ class AttrFilter
         .style("font-size", "10px")
 
     values = _.map(buyers, (v) => v[@attr])
-    x = d3.scale.linear().range([0, width]).domain([0, d3.max(values)])
+    x = d3.scale.linear().range([0, width]).domain([0, d3.max(values) + d3.max(values) * 0.1])
 
     data = d3.layout.histogram().bins(x.ticks(20))(values)
 
