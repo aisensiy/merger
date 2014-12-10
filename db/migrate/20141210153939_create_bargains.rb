@@ -13,7 +13,7 @@ class CreateBargains < ActiveRecord::Migration
       t.string :support_fund_use
       t.float :bargain_value
       t.date :value_at
-      
+
       t.float :target_estimate_value
       t.string :target_name
       t.string :target_industry
