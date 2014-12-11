@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'total#select_industry'
 
   get 'total/select_industry'
