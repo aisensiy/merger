@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211065808) do
+ActiveRecord::Schema.define(version: 20141211084720) do
 
   create_table "bargains", force: true do |t|
     t.string   "payment_type"
@@ -170,6 +170,7 @@ ActiveRecord::Schema.define(version: 20141211065808) do
     t.float    "net_profit_growth",   limit: 24
     t.float    "stock_share",         limit: 24
     t.float    "total_debt",          limit: 24
+    t.boolean  "is_sold"
   end
 
   create_table "targets", force: true do |t|
