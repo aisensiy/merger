@@ -34,3 +34,6 @@ bargain_rows.each { |row| Bargain.create!(row.to_hash) }
 BuyerV2.delete_all
 buyer_rows = CSV.read('db/buyers.csv', headers: true)
 buyer_rows.each { |row| BuyerV2.create!(row.to_hash) }
+
+User.delete_all
+FactoryGirl.create :user, email: 'admin@merger.com', password: '0000000a', password_confirmation: '0000000a'
