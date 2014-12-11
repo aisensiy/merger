@@ -1,11 +1,10 @@
 class Bargain < ActiveRecord::Base
   extend SimilarCalculatable
 
-  def self.similar(candidates, attrs, k=5)
+  def self.similar_with_index(candidates, attrs, k=5)
     target = attrs.values.map(&:to_f)
     attr_keys = attrs.keys
     candidate_matrix = candidates.map do |candidate|
-      puts candidate.attributes
       candidate.attributes.select { |k, v| attr_keys.include? k }.values.map do |v|
         v.nil? ? 0 : v.to_f
       end

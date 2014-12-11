@@ -85,12 +85,34 @@ class TotalController < ApplicationController
     candidate_bargains = Bargain.where(target_industry: @target_attrs[:target_industry])
     target_attrs = @target_attrs.dup
     target_attrs.delete(:target_industry)
-    similar_bargains = Bargain.similar(candidate_bargains, target_attrs).map { |v| v[0] }
+    similar_bargains = Bargain.similar_with_index(candidate_bargains, target_attrs).map { |v| v[0] }
     similar_buyers = BuyerV2.where('stock_code in (?)', similar_bargains.map(&:buyer_stock_code).uniq)
     @result = BuyerV2.similar(BuyerV2.where('industry in (?)', similar_buyers.map(&:industry).uniq), similar_buyers, @buyer_attrs).map { |v| v[0] }
   end
 
   def search_targets
+    @buyer_search_attrs = APP_CONFIG['buyer_attrs']
+    @industries = Bargain.select('buyer_industry').uniq.map(&:buyer_industry)
+  end
 
+  def search_targets_result
+    @buyer_attrs = params[:buyer_attrs]
+    @target_attrs = APP_CONFIG['target_attrs']
+    # get ref with same industry
+    reference_bargains = Bargain.where(buyer_industry: @buyer_attrs[:buyer_industry])
+    # get buyer mapping bargain
+    reference_buyers = BuyerV2.where('stock_code in (?)', reference_bargains.map(&:buyer_stock_code).uniq)
+    # get knn from buyer
+    buyer_attrs = @buyer_attrs.dup
+    buyer_attrs.delete(:buyer_industry)
+    similar_buyers = BuyerV2.similar_with_index(reference_buyers, buyer_attrs).map { |v| v[0] }
+    # get target with knn buyer in bargain
+    reference_targets = Bargain.where('buyer_stock_code in (?)', similar_buyers.map(&:stock_code))
+    p reference_targets
+    p reference_targets.map(&:target_industry)
+    # get similar target with is_sold false
+    candidate_targets = TargetV2.where('is_sold = ? and target_industry in (?)', false, reference_targets.map(&:target_industry).uniq)
+    p candidate_targets
+    @result = TargetV2.similar(candidate_targets, reference_targets, @target_attrs).map { |v| v[0] }
   end
 end
