@@ -75,7 +75,8 @@ class TotalController < ApplicationController
   end
 
   def search_buyers
-    @target_search_attrs = APP_CONFIG['target_search_attrs']
+    @target_search_attrs = APP_CONFIG['target_search_attrs']['text']
+    @industries = Bargain.select('target_industry').uniq.map(&:target_industry)
   end
 
   def search_targets
