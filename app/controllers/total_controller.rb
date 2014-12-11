@@ -73,4 +73,12 @@ class TotalController < ApplicationController
     @reference_buyers = Buyer.find(session[:reference_buyer_ids])
     @selected_buyer = Buyer.find(session[:selected_buyer_id])
   end
+
+  def search_buyers
+
+  end
+
+  def search_targets
+
+  end
 end
