@@ -75,7 +75,7 @@ class TotalController < ApplicationController
   end
 
   def search_buyers
-
+    @target_search_attrs = APP_CONFIG['target_search_attrs']
   end
 
   def search_targets

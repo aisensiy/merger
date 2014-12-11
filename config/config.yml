@@ -38,3 +38,12 @@ target_fixed_attrs: &target_fixed_attrs
 target:
   <<: *target_fixed_attrs
   <<: *target_attrs
+
+target_search_attrs:
+  net_profit: 最近一年的净利润(万元)
+  net_profit_t: 基准日当年（T）的净利润(万元)
+  net_profit_t_1: T+1的净利润(万元)
+  net_profit_t_2: T+2的净利润(万元)
+  net_profit_t_3: T+3的净利润(万元)
+  target_income: 最近一年的收入(万元)
+  industry: 行业
