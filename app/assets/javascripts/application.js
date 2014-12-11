@@ -23,3 +23,5 @@
 //= require get_similar_buyers
 //= require get_similar_targets
 //= require show_result
+//= require search_buyers_result
+//= require search_targets_result

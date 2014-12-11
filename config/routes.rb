@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'total#select_industry'
 
   get 'total/select_industry'
@@ -12,6 +13,14 @@ Rails.application.routes.draw do
   get 'total/get_similar_targets'
 
   get 'total/show_result'
+
+  get 'total/search_buyers'
+
+  get 'total/search_buyers_result'
+
+  get 'total/search_targets'
+
+  get 'total/search_targets_result'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

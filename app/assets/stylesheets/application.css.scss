@@ -17,3 +17,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "ui.jqgrid";
+
+.ui-jqgrid .ui-jqgrid-htable th div {
+  height: 27px;
+  line-height: 27px;
+  padding: 0px 10px 0px 10px;
+}
+
+.ui-jqgrid tr.ui-row-ltr td {
+  padding: 3px 10px;
+}

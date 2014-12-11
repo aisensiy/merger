@@ -1,40 +1,54 @@
 buyer_attrs: &buyer_attrs
-  market_value: 市值
-  t_minus_1_market_value: t - 1 市值
-  t_minus_2_market_value: t - 2 市值
-  net_profit: 当年净利润
-  t_minus_1_net_profit: t - 1 净利润
-  t_minus_2_net_profit: t - 2 净利润
-  operating_income: 营业收入
-  t_minus_1_operating_income: t - 1 营业收入
-  t_minus_2_operating_income: t - 2 营业收入
+  market_value: 市值(元)
+  pe: 市盈率
+  growth_ratio_1: 业绩增长率(T-1)(%)
+  growth_ratio_2: 业绩增长率(T-2)(%)
+  growth_ratio_3: 业绩增长率(T-3)(%)
+  roe: 净资产收益率ROE(加权)(%)
+  ssh_prop: 大股东持股比例(%) # strong_shareholder_proportion
+  cash_reserve_1: 货币保有量(T-1)(元)
+  cash_reserve_2: 货币保有量(T-2)(元)
+  cash_reserve_3: 货币保有量(T-3)(元)
+
 buyer_fixed_attrs: &buyer_fixed_attrs
-  code: 代码
-  name: 名称
-  owner: 控股人
+  company_name: 公司名称
+  stock_code: 股票代码
+  concept_sector: 概念板块
+  owner_type: 公司属性     # 国有企业/民营企业
+  buyer_industry: 行业
+
 buyer:
   <<: *buyer_fixed_attrs
   <<: *buyer_attrs
+
 target_attrs: &target_attrs
-  registered_capital: 注册资本
-  big_stockholder_percent: 大股东持股比例
-  net_assets: 净资产
-  liabilities: 债务
-  total_assets: 当前总资产
-  t_minus_1_total_assets: t - 1 总资产
-  t_minus_2_total_assets: t - 2 总资产
-  t_minus_1_net_assets: t - 1 净资产
-  t_minus_2_net_assets: t - 2 净资产
-  t_minus_1_operating_income: t - 1 营业收入
-  t_minus_2_operating_income: t - 2 营业收入
-  t_minus_1_net_profit: t - 1 净利润
-  net_profit: 当年净利润
+  net_profit: 最近一年的净利润(万元)
+  net_profit_t: 基准日当年（T）的净利润(万元)
+  net_profit_t_1: T+1的净利润(万元)
+  net_profit_t_2: T+2的净利润(万元)
+  net_profit_t_3: T+3的净利润(万元)
+  target_income: 最近一年的收入(万元)
 target_fixed_attrs: &target_fixed_attrs
-  name: 名称
-  owner: 控股人
-  create_date: 成立时间
-  description: 业务描述
-  address: 地址
+  company_name: 标的名称
+  target_industry: 标的资产所属行业
 target:
   <<: *target_fixed_attrs
   <<: *target_attrs
+
+target_search_attrs:
+  text:
+    net_profit: 最近一年的净利润(万元)
+    net_profit_t: 基准日当年（T）的净利润(万元)
+    net_profit_t_1: T+1的净利润(万元)
+    net_profit_t_2: T+2的净利润(万元)
+    net_profit_t_3: T+3的净利润(万元)
+    target_income: 最近一年的收入(万元)
+  other:
+    industry: 行业
+buyer_search_attrs:
+  text:
+    market_value: 市值
+    pe: 市盈率
+    growth_ratio_1: 业绩增长率(T-1)
+    growth_ratio_2: 业绩增长率(T-2)
+    growth_ratio_3: 业绩增长率(T-3)

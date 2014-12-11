@@ -33,6 +33,8 @@ gem 'spring',        group: :development
 gem "factory_girl_rails", "~> 4.0"
 gem "faker"
 
+gem 'devise'
+
 group :development do
   gem 'capistrano'
   gem 'capistrano-rails'

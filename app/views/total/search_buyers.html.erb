@@ -1,0 +1,17 @@
+<%= form_tag total_search_buyers_result_path, method: :get, role: 'form' do %>
+  <h1>输入待售公司的指标</h1>
+  <% @target_search_attrs.each do |k, v| %>
+    <div class="form-group">
+      <label><%= v %></label>
+      <input name="target_attrs[<%= k %>]" type="text" class="form-control" />
+    </div>
+  <% end %>
+    <div class="form-group">
+      <label>行业</label>
+      <%= select_tag('target_attrs[target_industry]',
+                     options_for_select(@industries), class: 'form-control') %>
+    </div>
+  <div class="actions">
+    <%= submit_tag("Search", class: "btn btn-primary") %>
+  </div>
+<% end %>

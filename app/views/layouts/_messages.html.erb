@@ -1,0 +1,7 @@
+<% flash.each do |key, value| %>
+  <% map = {notice: 'info', alert: 'danger'} %>
+  <div class="alert alert-<%= map[key.to_sym] %>" role='alert'>
+    <a href="#" data-dismiss="alert" class="close">×</a>
+    <%= value %>
+  </div>
+<% end %>
