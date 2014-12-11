@@ -15,7 +15,7 @@ buyer_fixed_attrs: &buyer_fixed_attrs
   stock_code: 股票代码
   concept_sector: 概念板块
   owner_type: 公司属性     # 国有企业/民营企业
-  buyer_industry: 行业
+  industry: 行业
 
 buyer:
   <<: *buyer_fixed_attrs
@@ -23,7 +23,7 @@ buyer:
 
 target_attrs: &target_attrs
   net_profit: 最近一年的净利润(万元)
-  net_profit_t: 基准日当年（T）的净利润(万元)
+  # net_profit_t: 基准日当年（T）的净利润(万元)
   net_profit_t_1: T+1的净利润(万元)
   net_profit_t_2: T+2的净利润(万元)
   net_profit_t_3: T+3的净利润(万元)
