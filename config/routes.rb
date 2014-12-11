@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   get 'total/search_buyers'
 
+  get 'total/search_buyers_result'
+
   get 'total/search_targets'
 
   # The priority is based upon order of creation: first created -> highest priority.

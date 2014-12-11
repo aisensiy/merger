@@ -14,8 +14,8 @@ buyer_fixed_attrs: &buyer_fixed_attrs
   company_name: 公司名称
   stock_code: 股票代码
   concept_sector: 概念板块
-  contact: 联系人
   owner_type: 公司属性     # 国有企业/民营企业
+  industry: 行业
 
 buyer:
   <<: *buyer_fixed_attrs
@@ -30,7 +30,7 @@ target_attrs: &target_attrs
   target_income: 最近一年的收入(万元)
 target_fixed_attrs: &target_fixed_attrs
   company_name: 标的名称
-  industry: 标的资产所属行业
+  target_industry: 标的资产所属行业
 target:
   <<: *target_fixed_attrs
   <<: *target_attrs

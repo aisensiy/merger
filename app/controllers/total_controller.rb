@@ -75,8 +75,19 @@ class TotalController < ApplicationController
   end
 
   def search_buyers
-    @target_search_attrs = APP_CONFIG['target_search_attrs']['text']
+    @target_search_attrs = APP_CONFIG['target_attrs']
     @industries = Bargain.select('target_industry').uniq.map(&:target_industry)
+  end
+
+  def search_buyers_result
+    @target_attrs = params[:target_attrs]
+    @buyer_attrs = APP_CONFIG['buyer_attrs']
+    candidate_bargains = Bargain.where(target_industry: @target_attrs[:target_industry])
+    target_attrs = @target_attrs.dup
+    target_attrs.delete(:target_industry)
+    similar_bargains = Bargain.similar(candidate_bargains, target_attrs).map { |v| v[0] }
+    similar_buyers = BuyerV2.where('stock_code in (?)', similar_bargains.map(&:buyer_stock_code).uniq)
+    @result = BuyerV2.similar(BuyerV2.where('industry in (?)', similar_buyers.map(&:industry).uniq), similar_buyers, @buyer_attrs).map { |v| v[0] }
   end
 
   def search_targets
