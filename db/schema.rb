@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211053219) do
+ActiveRecord::Schema.define(version: 20141211065808) do
 
   create_table "bargains", force: true do |t|
     t.string   "payment_type"
@@ -161,6 +161,15 @@ ActiveRecord::Schema.define(version: 20141211053219) do
     t.string   "pe_vc_holder"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "capital",             limit: 24
+    t.string   "garden"
+    t.float    "income_growth",       limit: 24
+    t.float    "market_value",        limit: 24
+    t.float    "net_asset",           limit: 24
+    t.float    "net_capital",         limit: 24
+    t.float    "net_profit_growth",   limit: 24
+    t.float    "stock_share",         limit: 24
+    t.float    "total_debt",          limit: 24
   end
 
   create_table "targets", force: true do |t|
