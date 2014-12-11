@@ -108,8 +108,11 @@ class TotalController < ApplicationController
     similar_buyers = BuyerV2.similar_with_index(reference_buyers, buyer_attrs).map { |v| v[0] }
     # get target with knn buyer in bargain
     reference_targets = Bargain.where('buyer_stock_code in (?)', similar_buyers.map(&:stock_code))
+    p reference_targets
+    p reference_targets.map(&:target_industry)
     # get similar target with is_sold false
-    candidate_targets = TargetV2.where('is_sold = ? and target_industry in (?)', false, reference_targets.map(&:target_industry))
-    @result = TargetV2.similar(candidate_targets, reference_targets, @target_attrs)
+    candidate_targets = TargetV2.where('is_sold = ? and target_industry in (?)', false, reference_targets.map(&:target_industry).uniq)
+    p candidate_targets
+    @result = TargetV2.similar(candidate_targets, reference_targets, @target_attrs).map { |v| v[0] }
   end
 end

@@ -1,5 +1,3 @@
-#= require filter
-
 $ ->
   return if !$('body.total-ctrl.search_buyers_result-md').size()
 

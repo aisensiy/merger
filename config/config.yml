@@ -15,7 +15,7 @@ buyer_fixed_attrs: &buyer_fixed_attrs
   stock_code: 股票代码
   concept_sector: 概念板块
   owner_type: 公司属性     # 国有企业/民营企业
-  industry: 行业
+  buyer_industry: 行业
 
 buyer:
   <<: *buyer_fixed_attrs

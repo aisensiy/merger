@@ -1,1 +1,18 @@
-<%= p params %>
+<script>
+    var result = <%= raw @result.to_json %>;
+    var fixed_target_attrs = <%= raw APP_CONFIG['target_fixed_attrs'].to_json %>;
+    var target_attrs = <%= raw APP_CONFIG['target_attrs'].select { |k, v| @target_attrs.include?(k) }.to_json %>;
+</script>
+
+<h1>输入的买家指标</h1>
+<div>
+  <% @buyer_attrs.each do |k, v| %>
+      <p><%= APP_CONFIG['buyer'][k] %>: <%= v %></p>
+  <% end %>
+</div>
+
+<h1>获取的参考标的公司</h1>
+<div id="search-target-grid">
+  <table id="search-target-grid-table"></table>
+  <div class="pager"></div>
+</div>
